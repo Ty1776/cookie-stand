@@ -1,0 +1,56 @@
+* {
+  font-family: sans-serif;
+}
+
+body {
+  background-color: gray;
+}
+
+nav {
+  text-align: center;
+  
+}
+
+#logo {
+  background-color: aquamarine;
+  border: solid 5px salmon;
+  border-radius: 25px;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50vw;
+}
+
+img {
+  width: 50vw;
+}
+
+header h1 {
+  text-align: center;
+  background-color: black;
+  font-size:50px;
+  color: salmon;
+  font-family: sans-serif;
+}
+
+h3 {
+  font-size: 30px;
+  color: green;
+}
+
+table {
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  background-color: gray;
+}
+
+tr {
+  border: solid 5px black;
+  padding: 10px;
+}
+
+td {
+  border: solid 5px black;
+  padding: 5px;
+  margin: 5px;
+}
