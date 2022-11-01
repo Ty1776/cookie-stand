@@ -1,14 +1,35 @@
 * {
   font-family: sans-serif;
 }
+
 body {
   background-color: gray;
 }
 
+nav {
+  text-align: center;
+  
+}
+
+#logo {
+  background-color: aquamarine;
+  border: solid 5px salmon;
+  border-radius: 25px;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50vw;
+}
+
+img {
+  width: 50vw;
+}
+
 header h1 {
-  background-color: blue;
+  text-align: center;
+  background-color: black;
   font-size:50px;
-  color: red;
+  color: salmon;
   font-family: sans-serif;
 }
 
