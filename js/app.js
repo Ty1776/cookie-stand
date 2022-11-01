@@ -7,11 +7,6 @@ let shopHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm
 let allStores = [];
 
 let storeData = document.getElementById('Store-Data');
-// let seattle = document.getElementById('Seattle Data');
-// let tokyo = document.getElementById('Tokyo Data');
-// let dubai = document.getElementById('Dubai Data');
-// let paris = document.getElementById('Paris Data');
-// let lima = document.getElementById('Lima Data');
 
 // HELPER FUNCTIONS - UTILITIES
 // Resource: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
@@ -30,14 +25,14 @@ function CookieStores(name, min, max, averageCookie) {
   allStores.push(this);
 }
 
-CookieStores.prototype.getTotalCookie = function () {
+CookieStores.prototype.getTotalCookie = function() {
   for (let i = 0; i < this.hourlyCookie.length; i++) {
     let thisHour = this.hourlyCookie[i];
     this.totalCookie += thisHour;
   }
 };
 
-CookieStores.prototype.calcHourlyCookie = function () {
+CookieStores.prototype.calcHourlyCookie = function() {
   for (let i = 0; i < shopHours.length; i++) {
     this.hourlyCookie.push(Math.ceil(randomCustomer(this.min, this.max) * this.averageCookie));
   }
@@ -49,16 +44,21 @@ new CookieStores('Dubai', 11, 38, 3.7);
 new CookieStores('Paris', 20, 38, 2.3);
 new CookieStores('Lima', 2, 16, 4.6);
 
-allStores[0].calcHourlyCookie();
-allStores[0].getTotalCookie();
-allStores[1].calcHourlyCookie();
-allStores[1].getTotalCookie();
-allStores[2].calcHourlyCookie();
-allStores[2].getTotalCookie();
-allStores[3].calcHourlyCookie();
-allStores[3].getTotalCookie();
-allStores[4].calcHourlyCookie();
-allStores[4].getTotalCookie();
+for (let i = 0; i < allStores.length; i++) {
+  allStores[i].calcHourlyCookie();
+  allStores[i].getTotalCookie();
+}
+
+// allStores[0].calcHourlyCookie();
+// allStores[0].getTotalCookie();
+// allStores[1].calcHourlyCookie();
+// allStores[1].getTotalCookie();
+// allStores[2].calcHourlyCookie();
+// allStores[2].getTotalCookie();
+// allStores[3].calcHourlyCookie();
+// allStores[3].getTotalCookie();
+// allStores[4].calcHourlyCookie();
+// allStores[4].getTotalCookie();
 
 console.log(allStores);
 
@@ -79,10 +79,6 @@ CookieStores.prototype.render = function() {
   let totalsCell = document.createElement('td');
   totalsCell.textContent = this.totalCookie;
   rowElem.appendChild(totalsCell);
-
-  // let row1 = document.createElement('th');
-  // row1.textContent = `${shopHours}`;
-
 };
 
 function makeHeader() {
@@ -107,9 +103,21 @@ function makeFooter() {
   let rowElem = document.createElement('tr');
   storeData.appendChild(rowElem);
 
-  let totals = document.createElement('tr');
+  let totals = document.createElement('td');
   totals.textContent = 'Totals';
   rowElem.appendChild(totals);
+
+  for (let i = 0; i < shopHours.length; i++) {
+    let allCookiesThisHour = 0;
+    console.log('Start of new Hour');
+    for (let j = 0; j < allStores.length; j++) {
+      let cookiesThisHour = allStores[j].hourlyCookie[i];
+      allCookiesThisHour += cookiesThisHour;
+    }
+    let storeTotals = document.createElement('td');
+    storeTotals.textContent = allCookiesThisHour;
+    rowElem.appendChild(storeTotals);
+  }
 }
 
 makeHeader();
