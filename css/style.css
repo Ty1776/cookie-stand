@@ -86,7 +86,22 @@ P {
   margin-bottom: 50px;
 }
 
+#location div img {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 150px;
+  margin-top: 50px;
+  border-bottom: solid 3px aquamarine;
+  border-right: solid 5px aquamarine;
+  border-radius: 25px;
+}
+
 article h2 {
+  font-weight: bolder;
   padding-left: 10px;
   padding-right: 10px;
   margin-bottom: 10px;
@@ -101,6 +116,12 @@ article p {
 
 footer {
   text-align: center;
+}
+
+footer img {
+  width: 150px;
+  border: solid 5px salmon;
+  border-radius: 15px;
 }
 
 /* TABLE STYLING */
