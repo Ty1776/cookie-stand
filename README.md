@@ -14,3 +14,5 @@
 - Pushed on a new branch "constructors"
 
 ### Lab 08  
+
+- Added CSS styling to both pages and images to homepage  
