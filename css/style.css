@@ -8,7 +8,11 @@ body {
 
 nav {
   text-align: center;
-  
+}
+
+a:hover {
+  background-color: salmon;
+  color: green;
 }
 
 #logo {
@@ -26,6 +30,7 @@ img {
 }
 
 header h1 {
+  font-family: 'Open Sans', sans-serif;
   text-align: center;
   background-color: black;
   font-size:50px;
@@ -33,15 +38,97 @@ header h1 {
   font-family: sans-serif;
 }
 
-h3 {
-  font-size: 30px;
-  color: green;
+h2 {
+  font-family: 'Open Sans', sans-serif;
 }
 
+P {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#about {
+  padding-top: 25px;
+  flex-direction: row;
+  width: 100vw;
+}
+
+#about h2 {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+#about P {
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 30px;
+  margin-left: 150px;
+  margin-right: 150px;
+  font-size: 15px;
+}
+
+#hours {
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+#location {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  margin-bottom: 50px;
+}
+
+#location div img {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 150px;
+  margin-top: 50px;
+  border-bottom: solid 3px aquamarine;
+  border-right: solid 5px aquamarine;
+  border-radius: 25px;
+}
+
+article h2 {
+  font-weight: bolder;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+article p {
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+}
+
+footer img {
+  width: 150px;
+  border: solid 5px salmon;
+  border-radius: 15px;
+}
+
+/* TABLE STYLING */
 table {
   font-family: Arial, Helvetica, sans-serif;
   color: white;
-  background-color: gray;
+  background-color: darkgray;
 }
 
 tr {
