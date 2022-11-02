@@ -11,6 +11,6 @@
 
 - Changed our Object Literal's into Constructors and used Prototypes and rendered to a table
 - Added some CSS styling
-- Pushed on a new branch
+- Pushed on a new branch "constructors"
 
 ### Lab 08  
