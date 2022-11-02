@@ -46,7 +46,7 @@ for (let i = 0; i < allStores.length; i++) {
   allStores[i].getTotalCookie();
 }
 
-console.log(allStores);
+// console.log(allStores);
 
 CookieStores.prototype.render = function() {
   let rowElem = document.createElement('tr');
@@ -95,7 +95,7 @@ function makeFooter() {
 
   for (let i = 0; i < shopHours.length; i++) {
     let allCookiesThisHour = 0;
-    console.log('Start of new Hour');
+    // console.log('Start of new Hour');
     for (let j = 0; j < allStores.length; j++) {
       let cookiesThisHour = allStores[j].hourlyCookie[i];
       allCookiesThisHour += cookiesThisHour;
@@ -104,6 +104,19 @@ function makeFooter() {
     storeTotals.textContent = allCookiesThisHour;
     rowElem.appendChild(storeTotals);
   }
+
+  // for (let i = 0; i < shopHours.length; i++) {
+  //   let allGrandTotal = 0;
+  //   console.log('new hour');
+  //   for (let j = 0; j < allStores.length; j++) {
+  //     let addHourlyCookies = allStores[j].hourlyCookie[i];
+  //     allGrandTotal += addHourlyCookies + addHourlyCookies;
+  //   }
+  //   let grandTotal = document.createElement('td');
+  //   grandTotal.textContent = allGrandTotal;
+  //   rowElem.appendChild(grandTotal);
+  //   console.log(allGrandTotal);
+  // }
 }
 
 makeHeader();
