@@ -8,6 +8,10 @@ let allStores = [];
 
 let storeData = document.getElementById('Store-Data');
 
+// *STEP 1: ELEMENT TO LISTEN TO
+
+let addStoreForm = document.getElementById('addStore');
+
 // *HELPER FUNCTIONS*
 
 // Resource: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
@@ -34,12 +38,16 @@ function makeHeader() {
 }
 
 function makeFooter() {
-  let rowElem = document.createElement('tr');
-  storeData.appendChild(rowElem);
+  let footer = document.getElementById('tfoot');
+  storeData.appendChild(footer);
+
+  let row = document.createElement('tr');
+  row.id = 'finalRow';
+  footer.appendChild(row);
 
   let totals = document.createElement('td');
   totals.textContent = 'Totals';
-  rowElem.appendChild(totals);
+  row.appendChild(totals);
 
   let dailyTotalCookies = 0;
   for (let i = 0; i < shopHours.length; i++) {
@@ -53,12 +61,29 @@ function makeFooter() {
 
     let storeTotals = document.createElement('td');
     storeTotals.textContent = allCookiesThisHour;
-    rowElem.appendChild(storeTotals);
+    row.appendChild(storeTotals);
   }
   let grandTotal = document.createElement('td');
   grandTotal.textContent = dailyTotalCookies;
-  rowElem.appendChild(grandTotal);
-  console.log(grandTotal);
+  row.appendChild(grandTotal);
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+
+  let name = event.target.newStore.value;
+  let min = +event.target.minCust.value;
+  let max = +event.target.maxCust.value;
+  let averageCookie = +event.target.avgCookie.value;
+  let newStore = new CookieStores(name, min, max, averageCookie);
+  console.log(newStore);
+
+  document.getElementById('finalRow').remove();
+
+  newStore.render();
+  makeFooter();
+
+  addStoreForm.reset();
 }
 
 // *CONSTRUCTOR*
@@ -72,6 +97,7 @@ function CookieStores(name, min, max, averageCookie) {
   this.totalCookie = 0;
 
   allStores.push(this);
+  // console.log(name);
 }
 
 CookieStores.prototype.getTotalCookie = function() {
@@ -93,14 +119,10 @@ new CookieStores('Dubai', 11, 38, 3.7);
 new CookieStores('Paris', 20, 38, 2.3);
 new CookieStores('Lima', 2, 16, 4.6);
 
-for (let i = 0; i < allStores.length; i++) {
-  allStores[i].calcHourlyCookie();
-  allStores[i].getTotalCookie();
-}
-
-// console.log(allStores);
-
 CookieStores.prototype.render = function() {
+  this.calcHourlyCookie();
+  this.getTotalCookie();
+
   let rowElem = document.createElement('tr');
   storeData.appendChild(rowElem);
 
@@ -117,11 +139,17 @@ CookieStores.prototype.render = function() {
   let totalsCell = document.createElement('td');
   totalsCell.textContent = this.totalCookie;
   rowElem.appendChild(totalsCell);
+
 };
 
+console.log(allStores);
+
+// *STEP 2: EVENT LISTENER
 // *EXECUTABLE CODE*
 
 makeHeader();
+
+addStoreForm.addEventListener('submit', handleSubmit);
 
 for (let i = 0; i < allStores.length; i++) {
   allStores[i].render();
