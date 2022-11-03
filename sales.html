@@ -9,6 +9,7 @@
   <link rel="stylesheet" type="text/css" href="css/reset.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
+
 <header>
   <h1>Sales Data</h1>
   <nav>
@@ -22,12 +23,34 @@
       <table id="Store-Data">
       </table>
     </section>
-  </main>
+
+    <section>
+      <form id="addStore">
+        <fieldset>
+          <legend>New Store</legend>
+          <label for="newStore">New Store Location</label>
+          <input id="newStore" type="text" name="newStore">
+
+          <label for="minCust">Min Customers (1-30)</label>
+          <input id="minCust" type="text" name="minCust">
+
+          <label for="maxCust">Max Customers (30-80)</label>
+          <input id="maxCust" type="text" name="maxCust">
+
+          <label for="avgCookie">Average Cookies (1-12)</label>
+          <input id="avgCookie" type="text" name="avgCookie">
+        </fieldset>
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+
   </main>
 </body>
+
 <footer>
   &copy; Tyler Huntley 2022
 </footer>
+
 <script src=js/app.js></script>
 
 </html>

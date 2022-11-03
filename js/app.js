@@ -8,6 +8,10 @@ let allStores = [];
 
 let storeData = document.getElementById('Store-Data');
 
+// *STEP 1: ELEMENT TO LISTEN TO
+
+let addStore = document.getElementById('addStore');
+
 // *HELPER FUNCTIONS*
 
 // Resource: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
@@ -58,7 +62,6 @@ function makeFooter() {
   let grandTotal = document.createElement('td');
   grandTotal.textContent = dailyTotalCookies;
   rowElem.appendChild(grandTotal);
-  console.log(grandTotal);
 }
 
 // *CONSTRUCTOR*
@@ -72,6 +75,7 @@ function CookieStores(name, min, max, averageCookie) {
   this.totalCookie = 0;
 
   allStores.push(this);
+  // console.log(name);
 }
 
 CookieStores.prototype.getTotalCookie = function() {
@@ -93,14 +97,10 @@ new CookieStores('Dubai', 11, 38, 3.7);
 new CookieStores('Paris', 20, 38, 2.3);
 new CookieStores('Lima', 2, 16, 4.6);
 
-for (let i = 0; i < allStores.length; i++) {
-  allStores[i].calcHourlyCookie();
-  allStores[i].getTotalCookie();
-}
-
-// console.log(allStores);
-
 CookieStores.prototype.render = function() {
+  this.calcHourlyCookie();
+  this.getTotalCookie();
+
   let rowElem = document.createElement('tr');
   storeData.appendChild(rowElem);
 
@@ -118,6 +118,28 @@ CookieStores.prototype.render = function() {
   totalsCell.textContent = this.totalCookie;
   rowElem.appendChild(totalsCell);
 };
+
+// *STEP3: DEFINE EVENT LISTENER
+
+function handleSubmit(event) {
+  event.preventDefault();
+
+  let name = event.target.newStore.value;
+  let min = +event.target.minCust.value;
+  let max = +event.target.maxCust.value;
+  let averageCookie = +event.target.avgCookie.value;
+  let newStore = new CookieStores(name, min, max, averageCookie);
+
+  newStore.render();
+  Element.remove(makeFooter.grandTotal);
+  addStore.reset();
+}
+
+console.log(allStores);
+
+// *STEP 2: EVENT LISTENER
+
+addStore.addEventListener('submit', handleSubmit);
 
 // *EXECUTABLE CODE*
 
